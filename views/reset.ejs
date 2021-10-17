@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+	<%- include('partials/head.ejs'); %> 
+
+<body>
+		<%- include('partials/header.ejs'); %>  
+		
+	<div class="container">
+		<form class="form reset-form">
+			<h1>Reset password</h1>
+			<div class="form-control">
+				<input id="email" type="email" name="email">
+				<label for="email">email</label>
+			</div>
+			<div class="form-control">
+				<button type="button" class="btn reset-submit">Get reset link</button>
+			</div>
+		</form>
+	</div>
+	<script type="module" src="./views-js/reset-browser.js"></script>
+</body>
+</html>

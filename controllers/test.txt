@@ -1,0 +1,13 @@
+CREATE TABLE tasks (
+    taskid int NOT NULL AUTO_INCREMENT,
+    userid int NOT NULL,
+    description varchar(256) NOT NULL,
+    completed bool NOT NULL,
+    deadline date,
+    PRIMARY KEY (taskid),
+    FOREIGN KEY (userid) REFERENCES users(userid)
+);
+
+
+INSERT INTO tasks (userid, description, deadline) 
+    VALUES(50, 'Feed dog', '2022-10-01');

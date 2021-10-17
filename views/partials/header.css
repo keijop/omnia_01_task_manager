@@ -1,0 +1,183 @@
+/* Global settings */
+
+*, *::before, *::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Navigation styles */
+
+header{
+	background-color: var(--dark-blue);
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	text-align: center;
+	top: 0;
+}
+
+.logo{
+	margin: 0.8rem;
+	font-family: 'Vampiro One', cursive;
+	color: var(--yellow);
+}
+
+/* Move away from screen but keep it. display: none would make it 
+not accessible for keyboard tab users */
+
+.nav-toggle{
+	position: absolute;
+	top: 999px;
+	left: 999px;
+}
+
+.nav-toggle:focus + .nav-toggle-label span,
+.nav-toggle:focus + .nav-toggle-label span::after,
+.nav-toggle:focus + .nav-toggle-label span::before	
+{
+	background-color: var(--yellow);
+}
+
+.nav-toggle-label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 1em;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+/* Hamburger symbol created with pseudo classes */
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+.nav-toggle:hover + .nav-toggle-label span,
+.nav-toggle:hover + .nav-toggle-label span::after,
+.nav-toggle:hover + .nav-toggle-label span::before	{
+	background-color: var(--yellow);
+}
+
+nav{
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	left: 0;
+	background-color: var(--dark-blue);
+	width: 100%;
+	transform: scale(1, 0);
+	transform-origin: top;
+	transition: transform 400ms ease-in-out;
+}
+
+nav ul{
+	margin: 0;
+	list-style: none;
+}
+
+nav li{
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: var(--yellow);
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px){
+	
+	.nav-toggle-label{
+		display: none;
+	}
+
+	header{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.logo{
+		margin-left: 3em;
+	}
+
+	nav{
+		all: unset;
+	}
+
+	nav ul{
+		display: flex;
+		align-items: center;
+		margin-right: 3em;
+	}
+
+	nav li{
+		margin: 0 1em;
+		position: relative;
+	}
+
+	nav a{
+		opacity: 1;
+	}
+
+	  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: #182a35;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+    background-color: var(--yellow);
+  }
+  
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+
+}

@@ -1,0 +1,142 @@
+.tasks{
+	width: 100%;
+}
+
+.task-add{
+	display: flex;
+	max-width: max-content;
+	margin-left: auto;
+	cursor: pointer;
+	margin-bottom: 1rem;
+}
+
+.task-add p{
+	display: flex;
+	align-items: center;
+}
+
+.task-add p span{
+	padding-left: 0.3rem;
+}
+
+
+.task-add:hover, .task-add:hover span {
+	color: var(--orange);
+}
+
+.task-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	background-color: var(--semilight-blue);
+	border-radius: var(--border-radius);
+}
+
+.task-add-form{
+	background-color: var(--yellow);
+	height: 0rem;
+	overflow: hidden;
+	transition: height .3s ease-in-out;
+}
+
+.task-add-form > *{
+	margin: 0.5rem 1rem;
+}
+
+.task-add-form input{
+	height: 2rem;
+	border: 0.125rem solid var(--dark-blue);
+	border-radius: var(--border-radius);
+	font-size: 100%;
+}
+
+.task-add-form input[type=text]{
+	flex-grow: 2;
+}
+
+.task-add-submit{
+	display: inline-block;
+	height: auto;
+	padding: 0.35rem;
+	color: var(--yellow);
+	background-color: var(--dark-blue);
+}
+
+.task-add-submit:hover{
+	color: white;
+	background-color: var(--dark-blue);
+	box-shadow: 1px 1px 3px white;
+}
+
+.task-description{
+	flex-basis: 35%;
+}
+
+.task-actions{
+	display: flex;
+}
+
+.task-actions > *{
+	cursor: pointer;
+}
+
+.completed {
+	background-color: var(--light-blue);
+	text-decoration-style: solid;
+	text-decoration-line: line-through;
+}
+
+
+/* Task action icons tooltip */
+.task-actions{
+	position: relative;
+	margin-left: auto;
+	color: var(--dark-blue);
+}
+
+.material-icons, .tooltipText{
+	color: var(--dark-blue);
+}
+
+.tooltipText{
+	position: absolute;
+	top: 25px;
+	padding: 0.3rem;
+	border-radius: 0.25rem;
+	background-color: var(--light-blue);
+	opacity: 0;
+}
+
+.material-icons:hover + .tooltipText{
+	opacity: 1;
+}
+
+/* icons */
+.edit:hover{
+	color: var(--orange);
+}
+
+.delete:hover {
+	color: var(--red);
+}
+
+.complete:hover {
+	color: var(--green);
+}
+
+/* .task-add-form visibility toggle class */
+.visible{
+	height: 120px;
+}
+
+@media screen and (min-width: 800px){
+	.tasks{
+		width: 60%;
+	}
+	.task-add-submit{
+		width: auto;
+	}
+}

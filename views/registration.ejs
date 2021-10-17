@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<%- include('partials/head.ejs'); %> 
+	
+<body>
+	
+	<%- include('partials/header.ejs'); %> 
+
+	<div class="container">
+		<form id="form-register" class="form form-register">
+			<h1>Register</h1>
+			<div class="form-control">
+				<input id="name" type="name" name="name" value="testname1">
+				<label for="name">Name</label>
+			</div>
+			<div class="form-control">
+				<input id="email" type="email" name="email" value="test@test.com">
+				<label for="email">Email</label>
+			</div>
+			<div class="form-control">
+				<input id="password" type="password" name="password" value="testPassword">
+				<label for="password">Password</label>
+			</div>
+			<div class="form-control">
+				<input id="password1" type="password" name="password1" value="testPassword">
+				<label for="password1">Confirm Password</label>
+			</div>
+			<div class="form-control">
+				<button type="submit" class="btn submit-register">Create account</button>
+			</div>
+		</form>
+	</div>
+	
+	<script type="module" src="/views-js/registration-browser.js"></script>
+</body>
+</html>

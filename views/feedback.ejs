@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<%- include('partials/head.ejs'); %> 
+
+<body>
+		<%- include('partials/header.ejs'); %>  
+		
+	<div class="container">
+		<form class="form feedback-form">
+			<h1>We appreciate your feedback!</h1>
+			<div class="form-control textarea-control">
+				<textarea id="feedback" class="feedback-textarea" type="textarea" name="feedback"></textarea>
+				<label for="feedback">your feedback</label>
+			</div>
+			<div class="form-control">
+				<input id="name" type="text" name="name">
+				<label for="name">name</label>
+			</div>
+			<div class="form-control">
+				<input id="email" type="email" name="email">
+				<label for="email">email</label>
+			</div>
+			<div class="form-control">
+				<button type="button" class="btn feedback-submit">Submit feedback</button>
+			</div>
+		</form>
+	</div>
+	<script type="module" src="./views-js/feedback-browser.js"></script>
+</body>
+</html>

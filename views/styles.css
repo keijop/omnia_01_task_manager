@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400|Inconsolata:400|Vampiro+One:400');
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root{ 
+/* COLORS */ 
+--background: hsla(200, 69%, 97%, 1);
+--light-blue: hsla(199, 64%, 73%, 1);
+--semilight-blue: #D2EAF5;
+--medium-blue: hsla(192, 70%, 43%, 1);
+--dark-blue: hsla(200, 95%, 14%, 1);
+--yellow: hsla(43, 100%, 51%, 1);
+--orange: hsla(32, 100%, 49%, 1);
+--red: #880700;
+--green: #008807;
+/* TYPOGRAPHY */
+--headingFont: 'Inconsolata', monospace;
+--bodyFont: 'Montserrat', sans-serif;
+
+
+--border-radius: 0.25rem;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: var(--bodyFont);
+	color: var(--dark-blue);
+}
+h1, h2, h3, h4{
+	font-family: var(--headingFont);
+	text-align: center;
+	padding: 1rem;
+}
+
+/* content container styles */
+.container{
+	width: 80vw;
+	margin: auto;
+	padding-top: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+ 
+.container > *:not(:last-child){
+	margin-bottom: 2rem;
+}
+/* form styles */
+.form-control{
+	border-radius: var(--border-radius);
+	position: relative;
+	margin: 2.75rem 0.5rem;
+	height: 3rem;
+}
+
+.form-control input, .form-control textarea{
+	width: 100%;
+	height: 2.5rem;
+	border: 1px solid var(--dark-blue);
+	border-radius: var(--border-radius);
+	box-shadow: 1px 1px 1px var(--medium-blue);	
+	font-size: 100%;
+	margin-bottom: 0.3rem;
+}
+
+.form-control input:hover, .form-control textarea:hover {
+	box-shadow: 2px 2px 2px var(--medium-blue);
+}
+
+.form-control label {
+	text-transform: lowercase;
+	font-weight: 500;
+	padding: 0.375rem 0;
+}
+
+.form-links{
+	display: flex;
+	justify-content: space-evenly;
+}
+/* buttons */
+.btn{
+	width: 100%;
+	height: 2.5rem;
+	border: 2px solid var(--dark-blue);
+	border-radius: var(--border-radius);
+	background-color: var(--semilight-blue);
+	text-transform: uppercase;
+	font-weight: 600;	
+}
+
+.btn:hover{
+	background-color: var(--light-blue);
+}
+/* dynamic styles */
+.success{
+	font-weight: 900;
+	color: var(--yellow);
+	background-color: var(--dark-blue);
+	padding: 0.5rem;
+	border-radius: var(--border-radius);
+	opacity: 1;
+}
+
+.error{
+	border-radius: var(--border-radius);
+	background-color: var(--semilight-blue);
+	float: right;
+	padding: 0 0.375rem;
+}
+
+.fade-away{
+	opacity: 0;
+	transition: opacity 2s;	
+}
+
+/* feedback styles */
+.textarea-control{
+	height: auto;
+}
+
+.textarea-control textarea{
+	width: 100%;
+	height: 8rem;
+	resize: vertical;
+	font-family: var(--bodyFont);
+	font-weight: 500;
+}
+
+@media screen and (min-width: 800px){
+	 .form{
+ 	width: 30vw;
+ }
+}
