@@ -4,11 +4,10 @@ const { validationResult } = require('express-validator');
 
 const getAllTasks = async (req, res) => {
 	try {
-		const stmt = 'SELECT * FROM tasks WHERE userid=?'
-		const values = 50 // logged in user userid
-		const name = 'Pasteet' //logged in user name
+		const stmt = 'SELECT * FROM tasks WHERE userid=? ORDER BY deadline'
+		const values = req.user.userid
 		const results = await queryDB(stmt, values)
-		res.status(200).render('tasks.ejs', {results, name})
+		res.status(200).json({results})
 	} catch(e) {
 		res.send('Something went worng here, try again ...')
 	}
@@ -27,6 +26,7 @@ const deleteTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
 	try {
+		console.log(req.params)
 		const stmt = 'UPDATE tasks SET completed=? WHERE taskid=?'
 		const values = [req.params.completed, req.params.id]
 		const results = await queryDB(stmt, values)
@@ -50,7 +50,7 @@ const addTask = async (req, res) => {
 		return res.status(400).json(errors)
 		};
 
-		const userid = 50 // this has to come from auth cookie
+		const userid = req.user.userid
 		const stmt = 'INSERT INTO tasks (description, deadline, userid) VALUES (?, ?, ?)'
 		const values = [req.body.description, req.body.deadline, userid]
 		console.log(values)

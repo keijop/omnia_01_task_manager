@@ -22,36 +22,7 @@
 				<label for="deadline"></<label>
 				<button class="btn task-add-submit " type="submit">add task</task>
 			</div>
-
-			<% results.forEach( task => { %>
-
-			<div class="task-wrapper <%= task.completed ? 'completed' : '' %>">
-				<div class="task-description"> <%= task.description %> </div>
-				<div class="task-date"> <%= task.deadline.toLocaleDateString(); %> </div>
-				<div class="task-actions" 
-					data-id=<%= task.taskid %>
-					data-complete=<%= task.completed %>  >
-					<div class="task-update " >
-						<span class="material-icons edit ">edit</span>
-						<span class="tooltipText">Edit</span>
-					</div>
-					<div class="task-update">
-						<span class="material-icons delete">delete_forever</span>
-						<span class="tooltipText">Delete</span>
-					</div>
-					<div class="task-update">
-						<span class="material-icons complete">
-							<%= task.completed ? 'check_circle' : 'check' %>
-						</span>
-						<span class="tooltipText">
-							<%= task.completed ? 'Uncheck' : 'Done' %>
-						</span>
-					</div>
-				</div>	
-			</div>
-
-			<% }) %>
-
+			<div class="tasksDOM"><div>
 		</div>
 	</div>
 

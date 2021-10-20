@@ -9,7 +9,15 @@
 			<li><a href="tasks">Tasks</a></li>
 			<li><a href="about">About</a></li>
 			<li><a href="feedback">Feedback</a></li>
-			<li><a href="/">Log in</a></li>
+
+ 			<% if(locals.isLoggedIn){  %>
+                <li><a class="logout" href="logout">Log out</a></li>
+            <% }else{ %>
+                <li><a href="login">Log in</a></li>
+            <% } %> 
+
+
+
 		</ul>
 	</nav>
 </header>

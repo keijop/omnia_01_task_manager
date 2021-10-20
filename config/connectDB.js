@@ -3,14 +3,14 @@ const mysql = require('mysql');
 
  
 
-const con = mysql.createConnection({
+const connection = mysql.createConnection({
                              host: process.env.DB_HOST, 
                              user: process.env.DB_USER, 
                              password: process.env.DB_PASSWORD, 
                              database: process.env.DB_DATABASE
                               });
 
-con.connect((err) => {
+connection.connect((err) => {
   if(err){
     throw err
   }else{
@@ -19,6 +19,6 @@ con.connect((err) => {
 })
 
 
- module.exports = con
+ module.exports = connection
 
 

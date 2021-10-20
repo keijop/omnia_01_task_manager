@@ -1,15 +1,15 @@
-const con = require('../db/connectDB.js')
+const connection = require('../config/connectDB.js')
 const {promisify} = require('util') 
 
 const queryDB = async (stmt, values) => {
 
 	try {
-		// make con.query return promise instead of taking callback as last argument
-		const query = promisify(con.query).bind(con)
+		// make connection.query return promise instead of taking callback as last argument
+		const query = promisify(connection.query).bind(connection)
 		let results = await query(stmt, values)  
 		return results
-	} catch(e) {
-		return e
+	} catch(err) {
+		return err
 	}
 } 
 

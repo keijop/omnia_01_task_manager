@@ -12,17 +12,17 @@ const validateSanitizeRegistration = [
 				.isEmail().withMessage('Must be valid email')
 				.not().isEmpty({ ignore_whitespace:true }).withMessage('Email is required')
 				.trim()
-				.escape()
+				.escape(),
 				//custom validation -> query db to check email is not in use
-				.custom( (value, {req}) => {
-					const stmt = 'SELECT * FROM users WHERE email=?'
-					const values = req.body.email
-					return queryDB(stmt, values).then(users =>{
-						if(users.length){
-							return Promise.reject('E-mail already in use');
-						}
-					}) 
-				}),
+				// .custom( (value, {req}) => {
+				// 	const stmt = 'SELECT * FROM users WHERE email=?'
+				// 	const values = req.body.email
+				// 	return queryDB(stmt, values).then(users =>{
+				// 		if(users.length){
+				// 			return Promise.reject('E-mail already in use');
+				// 		}
+				// 	}) 
+				// }),
 
 	body('password')
 				.not().isEmpty({ ignore_whitespace:true }).withMessage('Password is required')
