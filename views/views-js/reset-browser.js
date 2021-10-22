@@ -2,13 +2,16 @@ import { displayValidationErrMsg,
 		removeErrMsg, 
 		displayResponseMsg} from './utils.js'
 
-const resetPasswordSubmitBtn = document.querySelector('.reset-submit')
+// POST EMAIL 
 
-const resetPasswordSubmit = async (event) => {
+const getLinkSubmitBtn = document.querySelector('.email-submit')
+
+const getLinkSubmit = async (event) => {
 	
 	try {
 		event.preventDefault
 		removeErrMsg()
+
 		const email = document.querySelector('#email').value
 		let response = await fetch("/reset", {
 			method: "POST",
@@ -26,11 +29,13 @@ const resetPasswordSubmit = async (event) => {
 			displayResponseMsg(responseObject, document.querySelector('.reset-form'))
 		}
 	} catch(e) {
-		// statements
+		
 		console.log(e);
 	}
 
 };
 
-resetPasswordSubmitBtn.addEventListener('click', resetPasswordSubmit)
+
+	getLinkSubmitBtn.addEventListener('click', getLinkSubmit)	
+
 

@@ -85,7 +85,7 @@ h1, h2, h3, h4{
 	display: flex;
 	justify-content: space-evenly;
 }
-/* buttons */
+/* button styles */
 .btn{
 	width: 100%;
 	height: 2.5rem;
@@ -100,11 +100,12 @@ h1, h2, h3, h4{
 	background-color: var(--light-blue);
 }
 /* dynamic styles */
-.success{
+.message{
 	font-weight: 900;
 	color: var(--yellow);
 	background-color: var(--dark-blue);
 	padding: 0.5rem;
+	margin-bottom: 2rem;
 	border-radius: var(--border-radius);
 	opacity: 1;
 }

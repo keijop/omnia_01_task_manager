@@ -8,36 +8,17 @@ CREATE TABLE tasks (
     FOREIGN KEY (userid) REFERENCES users(userid)
 );
 
+CREATE TABLE reset (
+    token varchar(36) NOT NULL,
+    timestamp int NOT NULL,
+    email varchar(255) NOT NULL,
+    PRIMARY KEY (token)
+);
+
 
 INSERT INTO tasks (userid, description, deadline) 
     VALUES(50, 'Feed dog', '2022-10-01');
 
 
-            <% results.forEach( task => { %>
-
-            <div class="task-wrapper <%= task.completed ? 'completed' : '' %>">
-                <div class="task-description"> <%= task.description %> </div>
-                <div class="task-date"> <%= task.deadline.toLocaleDateString(); %> </div>
-                <div class="task-actions" 
-                    data-id=<%= task.taskid %>
-                    data-complete=<%= task.completed %>  >
-                    <div class="task-update " >
-                        <span class="material-icons edit ">edit</span>
-                        <span class="tooltipText">Edit</span>
-                    </div>
-                    <div class="task-update">
-                        <span class="material-icons delete">delete_forever</span>
-                        <span class="tooltipText">Delete</span>
-                    </div>
-                    <div class="task-update">
-                        <span class="material-icons complete">
-                            <%= task.completed ? 'check_circle' : 'check' %>
-                        </span>
-                        <span class="tooltipText">
-                            <%= task.completed ? 'Uncheck' : 'Done' %>
-                        </span>
-                    </div>
-                </div>  
-            </div>
-
-            <% }) %>
+let url = new URL(window.location) 
+console.log(url.searchParams.get('editors'))

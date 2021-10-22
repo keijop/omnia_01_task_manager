@@ -7,7 +7,11 @@
 
 		<div class="container">
 
-			<h1>Log in</h1>
+			<% if(!h1){%>
+				<h1>Log in</h1> 
+			<% }else{ %>
+				<h1>Log in to see your tasks</h1> 
+			<% } %>	
 
 			<%- include('partials/login-form.ejs'); %> 
 

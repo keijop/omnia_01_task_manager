@@ -1,4 +1,4 @@
-// helper functions
+// HELPER FUNCTIONS
 
 const scrollToView = (elem) => {
 	let elemY = elem.getBoundingClientRect().y;
@@ -49,7 +49,7 @@ const displayResponseMsg = (responseObject, form) => {
 	const responseMsgElement = document.createElement("P");
 	const cleanHTML = DOMPurify.sanitize(responseObject.msg);
 	responseMsgElement.innerHTML = cleanHTML;
-	responseMsgElement.classList.add("success");
+	responseMsgElement.classList.add("message");
 	form.appendChild(responseMsgElement);
 	scrollToView(responseMsgElement);
 	setTimeout(() => responseMsgElement.classList.add("fade-away"), 5000);

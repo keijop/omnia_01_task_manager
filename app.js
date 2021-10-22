@@ -7,16 +7,23 @@ const session = require('express-session')
 const passport = require('passport')
 const connection = require('./config/connectDB')
 const queryDB = require('./utils/queryDB')
+const router = require('./routes/router')
 
-const registerHandler = require('./controllers/registerHandler')
-const feedbackHandler = require('./controllers/feedbackHandler')
-const resetHandler = require('./controllers/resetHandler')
-const validateSanitizeRegistration = require('./middleware/validateSanitizeRegister')
-const validateSanitizeAddTask = require('./middleware/validateSanitizeAddTask')
-const validateSanitizeFeedback = require('./middleware/validateSanitizeFeedback')
-const validateSanitizeReset = require('./middleware/validateSanitizeReset')
-const {getAllTasks, deleteTask, updateTask, addTask} = require('./controllers/tasks')
-const {isAuth, isNotAuth} = require('./middleware/isAuthMiddleware')
+// const registerHandler = require('./controllers/registerHandler')
+// const feedbackHandler = require('./controllers/feedbackHandler')
+// const resetHandler = require('./controllers/resetHandler')
+
+// const validateSanitizeRegistration = require('./middleware/validateSanitizeRegister')
+// const validateSanitizeAddTask = require('./middleware/validateSanitizeAddTask')
+// const validateSanitizeFeedback = require('./middleware/validateSanitizeFeedback')
+// const {validateSanitizeReset, validateSanitizePassword} = require('./middleware/validateSanitizeReset')
+
+// const {getAllTasks, deleteTask, updateTask, addTask} = require('./controllers/tasks')
+// const {isAuth, isNotAuth} = require('./middleware/isAuthMiddleware')
+// const passwordHandler = require('./controllers/passwordHandler')
+
+const setLocals = require('./middleware/setLocals')
+const sessionOptions = require('./config/session')
 
 app.set('view engine', 'ejs')
 
@@ -35,19 +42,7 @@ app.use(express.static('views'))
 
 // ---------- SESSION SETUP ------------
 
-const MySQLStore = require('express-mysql-session')(session);
-
-const sessionStorage = new MySQLStore({}, connection)
-
-app.use(session({
-	secret : process.env.SESSION_SECRET,
-	resave : false,
-	saveUninitialized : true,
-	store : sessionStorage,
-	cookie : {
-		maxAge : 1000 * 60 * 60 *24 // 24hours  
-	}
-}))
+app.use(session(sessionOptions))
 
 // ---------- PASSPORT SETUP ------------
 
@@ -56,90 +51,91 @@ require('./config/passport') // entire passport config module
 app.use(passport.initialize())
 app.use(passport.session())
 
-// --------- SET LOCALS VAR MIDDLEWARE ---------
+app.use(setLocals)
 
-app.use((req,res, next) =>{
-	if(req.isAuthenticated()){
-		res.locals.isLoggedIn = true;
-	}else{
-		res.locals.isLoggedIn = false
-	} 
-	next()
-	
-})
+//routes
+app.use('/', router)
 
-// --------- TEST MIDDLEWARE -----------
-// app.use( (req, res, next) =>{
-// 	console.log(req.session)
-// 	console.log(req.user)
-// 	console.log(req.isAuthenticated())
-// 	console.log(res.locals)
-// 	next()
+
+// // --------- TEST MIDDLEWARE -----------
+// // app.use( (req, res, next) =>{
+// // 	console.log(req.session)
+// // 	console.log(req.user)
+// // 	console.log(req.isAuthenticated())
+// // 	console.log(res.locals)
+// // 	next()
+// // })
+
+
+// // ------------ ROUTES ------------
+
+// app.get('/', isAuth, (req, res) => {
+// 	res.set('Cache-control', 'no-cache, max-age=0')
+// 	res.render('tasks', {name : req.user.name})
 // })
 
+// app.get('/login', (req, res) =>{
+// 	res.render('login.ejs')
+// })
 
-// ------------ ROUTES ------------
+// app.post('/login', passport.authenticate('local', 
+// 	{failureRedirect : '/login', 
+// 	successRedirect : '/tasks'}))
 
-app.get('/', isAuth, (req, res) => {
-	res.set('Cache-control', 'no-cache, max-age=0')
-	res.render('tasks', {name : req.user.name})
-})
+// app.get('/logout', isAuth, (req, res) => {
+// 	req.logout()
+// 	res.redirect('/')
+// })
+// // xxxxxxxxxxxxxxxxxxx
 
-app.get('/login', (req, res) =>{
-	res.render('login.ejs')
-})
+// // about routes
+// app.get('/about', (req, res) => {
+// 	res.render('about.ejs')
+// })
+// // xxxx
 
-app.post('/login', passport.authenticate('local', 
-	{failureRedirect : '/login', 
-	successRedirect : '/tasks'}))
+// // tasks routes
+// app.get('/tasks', isAuth, (req, res) =>{
+// 	res.set('Cache-control', 'no-store, max-age=0')
+// 	res.render('tasks.ejs', {name : req.user.name})
+// })
+// // x
 
-app.get('/logout', isAuth, (req, res) => {
-	req.logout()
-	res.redirect('/')
-})
+// app.get('/task-data', isAuth, getAllTasks) //xxx
 
-// about routes
-app.get('/about', (req, res) => {
-	res.render('about.ejs')
-})
+// app.delete('/tasks/:id', isAuth, deleteTask)//xxx
 
-// tasks routes
-app.get('/tasks', isAuth, (req, res) =>{
-	res.set('Cache-control', 'no-store, max-age=0')
-	res.render('tasks.ejs', {name : req.user.name})
-})
+// app.patch('/tasks/:id/:completed', isAuth, updateTask)//xxx
 
-app.get('/task-data', isAuth, getAllTasks) 
-
-app.delete('/tasks/:id', isAuth, deleteTask)
-
-app.patch('/tasks/:id/:completed', isAuth, updateTask)
-
-app.post('/tasks', validateSanitizeAddTask, addTask)
+// app.post('/tasks', validateSanitizeAddTask, addTask) //xxx
 
 
-// registration routes
-app.get('/registration', (req, res) =>{
-	res.render('registration.ejs')
-})
+// // registration routes
+// app.get('/registration', (req, res) =>{ //xxx
+// 	res.render('registration.ejs')
+// })
 
-app.post('/registration', validateSanitizeRegistration, registerHandler)
+// app.post('/registration', validateSanitizeRegistration, registerHandler)//xxx
 
-// feedback route
-app.get('/feedback', (req, res) => {
-	res.render('feedback.ejs')
-})
+// // feedback route
+// app.get('/feedback', (req, res) => {//xxx
+// 	res.render('feedback.ejs')
+// })
 
-app.post('/feedback', validateSanitizeFeedback, feedbackHandler)
+// app.post('/feedback', validateSanitizeFeedback, feedbackHandler)//xxx
 
-// reset routes
-app.get('/reset', (req, res) =>{
-	res.render('reset.ejs')
-})
+// // reset routes
+// app.get('/reset', (req, res) =>{
+// 	res.render('reset.ejs')
+// })
 
-app.post('/reset', validateSanitizeReset, resetHandler)
+// app.post('/reset', validateSanitizeReset, resetHandler)
 
+// app.get('/password', (req, res) =>{
+// 	res.render('password.ejs')
+// })
 
+// app.patch('/password',validateSanitizePassword, passwordHandler)
 
 const port = process.env.PORT || 3000
 
