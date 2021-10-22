@@ -5,8 +5,8 @@ import {scrollToView,
 
 // LOAD TASKS
 // fetch all tasks, sanitize tasks
-// map tasks into new array as html, then join arr to create a single html
-// use single html as innerHTML for DOM element
+// map tasks into new array as html, then join arr to create a single html string
+// use string as innerHTML for DOM element
 const loadTasksDOM = async () => {
 	const taskData = await fetch('/task-data')
 	const tasks = await taskData.json()
@@ -20,6 +20,12 @@ const loadTasksDOM = async () => {
 		return taskObj
 	})
 
+	// TO DO: add edit functionality
+	// <div class="task-update">
+	//     <span class="material-icons edit ">edit</span>
+	//     <span class="tooltipText">Edit</span>
+	// </div>
+
 	
 	const tasksDOMinnerHTML = tasks.results.map(task => {
 
@@ -29,10 +35,6 @@ const loadTasksDOM = async () => {
                 <div class="task-actions" 
                     data-id= ${task.taskid}
                     data-complete= ${task.completed} >
-                    <div class="task-update " >
-                        <span class="material-icons edit ">edit</span>
-                        <span class="tooltipText">Edit</span>
-                    </div>
                     <div class="task-update">
                         <span class="material-icons delete">delete_forever</span>
                         <span class="tooltipText">Delete</span>
@@ -133,8 +135,8 @@ const taskAdd = async () => {
 }
 
 
-// for dynamically rendered content add event listener to parent element
-// that was rendered on initial load - event delegation
+// for dynamically rendered content add event listener to static parent element
+// rendered on initial load - event delegation
 const tasksDOMContainer = document.querySelector('.tasksDOM')
 
 tasksDOMContainer.addEventListener('click', (event) =>{
@@ -145,7 +147,6 @@ tasksDOMContainer.addEventListener('click', (event) =>{
 		taskComplete(event)
 	}
 })
-
 
 
 const addTaskBtn = document.querySelector('.task-add-submit')

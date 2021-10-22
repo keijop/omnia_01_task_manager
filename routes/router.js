@@ -52,7 +52,7 @@ router.route('/task-data').get(isAuth, getAllTasks)
 router.route('/tasks/:id').delete(isAuth, deleteTask)
 router.route('/tasks/:id/:completed').patch(isAuth, updateTask)
 
-router.route('/register').get( (req, res) =>{
+router.route('/registration').get( (req, res) =>{
 							res.render('registration.ejs')
 							})
 							.post(validateSanitizeRegistration, registerHandler)
