@@ -16,7 +16,7 @@ const submitFeedback = async (event) => {
 		name : document.querySelector('#name').value,
 		email : document.querySelector('#email').value
 	}
-	console.log(data)
+
 	const response = await fetch("/feedback", {
 		method : 'POST',
 		headers : {
@@ -25,6 +25,7 @@ const submitFeedback = async (event) => {
 		body : JSON.stringify(data)
 	})
 
+
 	const responseObject = await response.json()
 	if(responseObject.errors) {
 		displayValidationErrMsg(responseObject);
@@ -32,7 +33,9 @@ const submitFeedback = async (event) => {
 		displayResponseMsg(responseObject, document.querySelector('.feedback-form'))
 	}
 
-	
+	document.querySelector('#feedback').value = ''
+	document.querySelector('#name').value = ''
+	document.querySelector('#email').value = ''
 
 }
 

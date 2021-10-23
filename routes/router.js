@@ -70,7 +70,7 @@ router.route('/reset').get((req, res) =>{
 router.route('/password').get((req, res) =>{
 							res.render('password.ejs')
 							})
-							.post(validateSanitizePassword, passwordHandler)
+							.patch(validateSanitizePassword, passwordHandler)
 
 
 module.exports = router

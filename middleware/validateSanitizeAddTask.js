@@ -10,7 +10,7 @@ const validateSanitizeAddTask = [
 			.escape(),
 
 	body('deadline')
-			.isISO8601({strict : true}).withMessage('Invalid date')
+			.isISO8601({strict : true}).withMessage('Invalid deadline')
 			.isBefore(maxDate).withMessage('Maximum deadline is 31/12/999')
 			.trim()
 			.escape()

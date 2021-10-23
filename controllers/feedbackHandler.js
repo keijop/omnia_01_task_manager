@@ -9,7 +9,19 @@ const feedbackHandler = (req, res) => {
 		return res.status(400).json(errors)
 	}
 
-	//business logic, do something with the feedback ()
+	//business logic, do something with the feedback 
+	// -------------
+	const data = {
+	from :' "Task manager Admin" <pruntk@mail.com>',
+	to : req.body.email,
+	subject : 'Feedback',
+	html : `<div><b>name:</b> ${req.body.name}<br>
+			<b>email:</b> ${req.body.email}<br>
+			<b>text:</b> ${req.body.feedback}</div>`
+	}
+
+	sendEmail(data)
+	// --------------
 
 	const emailData = {
 	from :' "Task manager" <webTesting@mail.com>',

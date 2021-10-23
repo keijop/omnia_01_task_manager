@@ -11,6 +11,8 @@ const loadTasksDOM = async () => {
 	const taskData = await fetch('/task-data')
 	const tasks = await taskData.json()
 
+	console.log(tasks)
+
 	// sanitize 
 	const tasksCopy = JSON.parse(JSON.stringify(tasks.results)) //deep copy
 	const purifiedTasks = tasksCopy.map( taskObj =>{
@@ -20,13 +22,6 @@ const loadTasksDOM = async () => {
 		return taskObj
 	})
 
-	// TO DO: add edit functionality
-	// <div class="task-update">
-	//     <span class="material-icons edit ">edit</span>
-	//     <span class="tooltipText">Edit</span>
-	// </div>
-
-	
 	const tasksDOMinnerHTML = tasks.results.map(task => {
 
 		return `<div class="task-wrapper ${task.completed ? 'completed' : ''} ">
@@ -51,6 +46,12 @@ const loadTasksDOM = async () => {
             </div>`
 
 	}).join('')
+
+	// TO DO: add edit functionality
+	// <div class="task-update">
+	//     <span class="material-icons edit ">edit</span>
+	//     <span class="tooltipText">Edit</span>
+	// </div>
 
 	document.querySelector('.tasksDOM').innerHTML = tasksDOMinnerHTML
 }

@@ -17,6 +17,10 @@ header{
 	top: 0;
 }
 
+header a {
+	text-decoration: none;
+}
+
 .logo{
 	margin: 0.8rem;
 	font-family: 'Vampiro One', cursive;

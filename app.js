@@ -5,17 +5,18 @@ const multer = require('multer')
 const upload = multer()
 const session = require('express-session')
 const passport = require('passport')
+require('./config/passport') // entire passport config module 
 const connection = require('./config/connectDB')
-const queryDB = require('./utils/queryDB')
 const router = require('./routes/router')
 const notFound = require('./middleware/notFound')
+const errorHandler = require('./middleware/errorHandler')
 
 const setLocals = require('./middleware/setLocals')
 const sessionOptions = require('./config/session')
 
 app.set('view engine', 'ejs')
 
-// --- Middleware ---
+// --- MIDDLEWARE ---
 
 // for parsing application/json
 app.use(express.json())
@@ -28,17 +29,16 @@ app.use(upload.array())
 
 app.use(express.static('views'))
 
-// ---------- SESSION SETUP ------------
+// express-session
 
 app.use(session(sessionOptions))
 
-// ---------- PASSPORT SETUP ------------
-
-require('./config/passport') // entire passport config module 
+// passport-local auth
 
 app.use(passport.initialize())
 app.use(passport.session())
 
+// variables for dynamic views
 app.use(setLocals)
 
 //routes
@@ -46,6 +46,9 @@ app.use('/', router)
 
 // not-found
 app.use(notFound)
+
+//error handler
+app.use(errorHandler)
 
 const port = process.env.PORT || 3000
 
