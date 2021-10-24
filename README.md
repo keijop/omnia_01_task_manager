@@ -73,7 +73,7 @@ During this project I have been able to develop new and existing core skills:
 - conceptual understanding of Express framework and middleware
 - http protocol  
 - user authentication with Passport.js local strategy with sessions
-- password reset flow with e-mail and token
+- password reset flow with e-mail and uuid
   
 
 ### Continued development
