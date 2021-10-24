@@ -15,7 +15,7 @@ This is a project for [Omnia](https://www.omnia.fi/en) web development course to
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+
 
 
 ## Overview
@@ -26,9 +26,10 @@ Build an application that features the following:
 
 - Dynamic content (database)
 - CRUD operations
-- User authentication
+- User authentication (log in/out, password reset, email verification)
 - Responsive layout
 - Mobile first design
+- Feedback form
 
 ### Screenshot
 
@@ -72,7 +73,7 @@ During this project I have been able to develop new and existing core skills:
 
 ### Continued development
 
-In future projects I plan to dive deeper into REST API design conventions and patterns, get skilled on MERN stack and implement more complex user authentication strategies.   
+In future projects I plan to dive deeper into REST API design conventions and patterns, get skilled on MERN stack and implement more complex user authentication strategies and features.   
 
 
 ### Useful resources
@@ -84,14 +85,5 @@ In future projects I plan to dive deeper into REST API design conventions and pa
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- LinkedIn - [Keijo Prunt](https://www.linkedin.com/in/keijo-prunt-b7aaa1205/)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
