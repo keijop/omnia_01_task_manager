@@ -20,7 +20,7 @@ if(process.env.JAWSDB_URL){
 
 connection.connect((err) => {
   if(err){
-    throw err
+    throw err('db error')
   }else{
     console.log('Connected to DB...')
   }
