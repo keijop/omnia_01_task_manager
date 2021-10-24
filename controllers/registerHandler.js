@@ -36,7 +36,7 @@ const registerHandler = asyncWrapper(  async (req, res, next) =>{
 			subject : 'Welcome to Task Manager',
 			html : `<h1>Welcome ${req.body.name}</h1><br>
 					<p>You have now successfully registered.<br>
-					<a href="http://localhost:3000/" target="_blank">Sign in</a>
+					<a href="https://omnia-task-manager.herokuapp.com/" target="_blank">Sign in</a>
 					and start using the application</p>`
 		}
 

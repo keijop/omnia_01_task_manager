@@ -32,7 +32,7 @@ const feedbackHandler = (req, res) => {
 			<p>Thank you for your feedback.<br>
 			We will get back to you asap!<br>
 			<div>
-				<a href="http://localhost:3000/" target="_blank">Task Manager</a>
+				<a href="https://omnia-task-manager.herokuapp.com" target="_blank">Task Manager</a>
 				</p>
 			</div>`
 	}

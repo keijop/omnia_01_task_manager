@@ -31,15 +31,12 @@ app.use(upload.array())
 app.use(express.static('views'))
 
 // express-session
-
 app.use(session(sessionOptions))
 
 // express-flash (show flash messages from passport.authenticate)
-
 app.use(flash())
 
 // passport-local auth
-
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -58,14 +55,4 @@ app.use(errorHandler)
 const port = process.env.PORT || 3000
 
 app.listen(port, () => console.log(`App is listening on port ${port}...`))
-
-
-
-
-
-
-
-
-
-
 

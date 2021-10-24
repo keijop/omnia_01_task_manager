@@ -21,7 +21,6 @@
 --headingFont: 'Inconsolata', monospace;
 --bodyFont: 'Montserrat', sans-serif;
 
-
 --border-radius: 0.25rem;
 }
 
@@ -133,6 +132,15 @@ h1, h2, h3, h4{
 	resize: vertical;
 	font-family: var(--bodyFont);
 	font-weight: 500;
+}
+
+.not-found{
+	padding: 3rem;
+	background-color: var(--yellow);
+	border-radius: var(--border-radius);
+	font-weight: 900;
+	font-size: 2rem;
+	box-shadow: 1px 1px 3px var(--light-blue);
 }
 
 @media screen and (min-width: 800px){
