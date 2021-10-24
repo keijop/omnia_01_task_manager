@@ -5,7 +5,7 @@ This is a project for [Omnia](https://www.omnia.fi/en) web development course to
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
+  - [The goal](#the-goal)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -13,6 +13,7 @@ This is a project for [Omnia](https://www.omnia.fi/en) web development course to
   - [Deployed with](#deployed-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
+  - [To do](#to-do)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -20,16 +21,20 @@ This is a project for [Omnia](https://www.omnia.fi/en) web development course to
 
 ## Overview
 
-### The challenge
+### The goal
 
-Build an application that features the following:
+Build a Node Express application with following features:
 
 - Dynamic content (database)
 - CRUD operations
-- User authentication (log in/out, password reset, email verification)
 - Responsive layout
 - Mobile first design
 - Feedback form
+- User authentication
+  + user registration
+  + email verification
+  + log in/out
+  + password reset
 
 ### Screenshot
 
@@ -75,13 +80,14 @@ During this project I have been able to develop new and existing core skills:
 
 In future projects I plan to dive deeper into REST API design conventions and patterns, get skilled on MERN stack and implement more complex user authentication strategies and features.   
 
+### To do
+
+Add 'remember me' functionality and corresponding checkbox to login page.
 
 ### Useful resources
 
 - [Coding Addict](https://www.youtube.com/watch?v=TNV0_7QRDwY) - Node Express fundamentals
 - [freeCodeCamp](https://www.youtube.com/watch?v=F-sFp_AvHc8) - This thorough video tutorial helped me to understand Passport.js local strategy and the underlying logic and flow based on sessions and cookies.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
