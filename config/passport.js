@@ -21,7 +21,7 @@ const verifyCallback = async (username, password, done) => {
 		const user = results[0]
 
 		if(!user){
-			return done(null, false)
+			return done(null, false, {message : 'Incorrect credentials'})
 		}
 
 		//hashes user input pw and compares it to hashed user.password from DB, returs true/false
@@ -30,7 +30,7 @@ const verifyCallback = async (username, password, done) => {
 		if(match){
 			return done(null, user)	// user authenticated
 		}else{
-			return done(null, false)
+			return done(null, false, {message : 'Incorrect credentials'})
 		}
 		
 	} catch(err) {

@@ -19,6 +19,8 @@ CREATE TABLE reset (
 INSERT INTO tasks (userid, description, deadline) 
     VALUES(50, 'Feed dog', '2022-10-01');
 
+        <% if(messages.error){ %>
+            <%= messages.error %>
+        <% } %> 
 
-let url = new URL(window.location) 
-console.log(url.searchParams.get('editors'))
+mysql://bd80dkx7d5k03cb8:foshgcrzhfdbhljs@r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/y31vb2bkp4m7gez2

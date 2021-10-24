@@ -29,9 +29,10 @@ router.route('/').get(isAuth, (req, res) => {
 router.route('/login').get( (req, res) =>{
 						res.render('login.ejs', {h1 : 'Login to see task'})
 						})
-					.post(passport.authenticate('local', 
+						.post(passport.authenticate('local', 
 						{failureRedirect : '/login', 
-						successRedirect : '/tasks'}))
+						successRedirect : '/tasks',
+						failureFlash : true}))
 						
 router.route('/logout').get(isAuth, (req, res) => {
 						req.logout()

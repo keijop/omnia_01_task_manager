@@ -1,18 +1,19 @@
 
 <form class="form login-form" method="post" action="/login">
+	<div class="error">
+		<span>
+			<% if(messages.error){ %>
+            	<%= messages.error %>
+        	<% } %> 
+		</span>
+	</div>
 	<div class="form-control">
 		<input id="email" type="email" name="email">
 		<label for="email">Email</label>
-		<div class="form-error">
-		<span></span>
-		</div>
 	</div>
 	<div class="form-control">
 		<input id="password" type="password" name="password">
 		<label for="password">Password</label>
-		<div class="form-error">
-		<span></span>
-		</div>
 	</div>
 	<div class="form-control">
 		<button type="submit" class="btn">Log in</button>

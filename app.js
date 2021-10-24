@@ -4,6 +4,7 @@ require('dotenv').config()
 const multer = require('multer')
 const upload = multer()
 const session = require('express-session')
+const flash = require('express-flash')
 const passport = require('passport')
 require('./config/passport') // entire passport config module 
 const connection = require('./config/connectDB')
@@ -32,6 +33,10 @@ app.use(express.static('views'))
 // express-session
 
 app.use(session(sessionOptions))
+
+// express-flash (show flash messages from passport.authenticate)
+
+app.use(flash())
 
 // passport-local auth
 
