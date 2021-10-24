@@ -4,7 +4,7 @@
   "description": "school project 1",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "keijo p",
   "license": "ISC",
