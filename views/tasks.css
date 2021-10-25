@@ -129,7 +129,7 @@
 
 /* .task-add-form visibility toggle class */
 .visible{
-	height: 120px;
+	height: 160px;
 }
 
 @media screen and (min-width: 800px){
@@ -139,4 +139,8 @@
 	.task-add-submit{
 		width: auto;
 	}
+
+	.visible{
+	height: 120px;
+}
 }
