@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const queryDB = require('../utils/queryDB')
 const sendEmail = require('../utils/sendEmail')
 const asyncWrapper = require('../middleware/asyncWrapper')
+const crypto = require('crypto')
 
 const registerHandler = asyncWrapper(  async (req, res, next) =>{
 	
@@ -12,8 +13,10 @@ const registerHandler = asyncWrapper(  async (req, res, next) =>{
 	};
 
 	const hashedPassword = await bcrypt.hash(req.body.password, 10)
-	const stmt = 'INSERT INTO users (name, email, password) VALUES (?,?,?)';
-	const values =[req.body.name, req.body.email, hashedPassword]
+	const token = crypto.randomUUID({disableEntropyCache : true});
+
+	const stmt = 'INSERT INTO users (name, email, password, token) VALUES (?,?,?,?)';
+	const values =[req.body.name, req.body.email, hashedPassword, token]
 	const results = await queryDB(stmt, values)
 
 	if(results.affectedRows !== 1){
@@ -25,7 +28,7 @@ const registerHandler = asyncWrapper(  async (req, res, next) =>{
 	}else{
 		res.status(201).json({	
 							success : true,
-							msg : 'Great success, we will send you a confirmation email shortly!',
+							msg : 'Success, we will email you a verification link!',
 							name : req.body.name,
 							response : results
 							})
@@ -34,10 +37,10 @@ const registerHandler = asyncWrapper(  async (req, res, next) =>{
 			from :' "Task manager" <webTesting@mail.com>',
 			to : req.body.email,
 			subject : 'Welcome to Task Manager',
-			html : `<h1>Welcome ${req.body.name}</h1><br>
-					<p>You have now successfully registered.<br>
-					<a href="https://omnia-task-manager.herokuapp.com/" target="_blank">Sign in</a>
-					and start using the application</p>`
+			html : `<h1>Hi ${req.body.name}</h1><br>
+					<p>Press
+					<a href="https://omnia-task-manager.herokuapp.com/verify/${token}" target="_blank">here</a>
+					to verify your email and start using the application</p>`
 		}
 
 		sendEmail(emailData)

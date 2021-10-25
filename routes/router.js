@@ -10,6 +10,7 @@ const {
 	} = require('../controllers/tasks')
 
 const registerHandler = require('../controllers/registerHandler')
+const emailVerifyHandler = require('../controllers/emailVerifyHandler')
 const feedbackHandler = require('../controllers/feedbackHandler')
 const resetHandler = require('../controllers/resetHandler')
 const passwordHandler = require('../controllers/passwordHandler')
@@ -57,6 +58,8 @@ router.route('/registration').get( (req, res) =>{
 							res.render('registration.ejs')
 							})
 							.post(validateSanitizeRegistration, registerHandler)
+
+router.route('/verify/:token').get(emailVerifyHandler)
 
 router.route('/feedback').get((req, res) => {
 							res.render('feedback.ejs')
