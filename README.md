@@ -72,9 +72,10 @@ Build a Node Express application with following features:
 During this project I have been able to develop new and existing core skills:
 - use of SQL database in Node/Express application
 - conceptual understanding of Express framework and middleware
-- http protocol  
+- better understanding of http protocol
+- user authentication foundations and flow in Express    
 - user authentication with Passport.js local strategy with sessions
-- password reset flow with e-mail and uuid
+
   
 
 ### Continued development
