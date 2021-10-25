@@ -52,6 +52,7 @@ Build a Node Express application with following features:
 - Semantic HTML5 markup
 - CSS custom properties
 - Javascript ES6 syntax
+- AJAX with Fetch API
 - Flexbox
 - Mobile-first workflow
 - Responsive layout
