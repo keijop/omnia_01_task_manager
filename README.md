@@ -6,6 +6,7 @@ This is a project for [Omnia](https://www.omnia.fi/en) web development course to
 
 - [Overview](#overview)
   - [The goal](#the-goal)
+  - [Description](#description)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -35,6 +36,9 @@ Build a Node Express application with following features:
   + email verification
   + log in/out
   + password reset
+ 
+### Description
+Task Manager application features user registration with e-mail verification. Signed in user can create, delete, view and update tasks. Registered user can reset password. User can submit feedback.
 
 ### Screenshot
 
