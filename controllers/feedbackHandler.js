@@ -12,8 +12,8 @@ const feedbackHandler = (req, res) => {
 	//business logic, do something with the feedback 
 	// -------------
 	const data = {
-	from :' "Task manager Admin" <pruntk@gmail.com>',
-	to : req.body.email,
+	from :' "Task manager Admin" <webTesting@mail.com>',
+	to : 'pruntk@gmail.com',
 	subject : 'Feedback',
 	html : `<div><b>name:</b> ${req.body.name}<br>
 			<b>email:</b> ${req.body.email}<br>
