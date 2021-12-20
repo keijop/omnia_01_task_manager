@@ -13,7 +13,7 @@ const resetHandler = asyncWrapper(async (req, res, next) => {
 
   //check user exist in DB
   const stmt = 'SELECT * FROM users WHERE email=?'
-  values = req.body.email
+  const values = req.body.email
   const results = await queryDB(stmt, values)
   if (!results.length == 1) {
     next(createCustomError(`Email ${req.body.email} not found`, 404))
