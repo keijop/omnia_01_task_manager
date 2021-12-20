@@ -23,7 +23,7 @@ const feedbackHandler = (req, res) => {
   // --------------
 
   const emailData = {
-    from: ' "Task manager" <webTesting@mail.com>',
+    from: ' "Task manager" <pruntk@gmail.com>',
     to: req.body.email,
     subject: 'Feedback received',
     html: `<h2>We appreciate your feedback</h2><br>
