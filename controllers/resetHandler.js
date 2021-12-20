@@ -22,7 +22,8 @@ const resetHandler = asyncWrapper(async (req, res, next) => {
   //create token and insert userObject into reset DB
   const token = crypto.randomUUID({ disableEntropyCache: true })
   const stmt2 = 'INSERT INTO reset (token, email, timestamp) VALUES (?,?,?)'
-  const values2 = [token, req.body.email, Date.now()]
+  const timestamp = Date.now()
+  const values2 = [token, req.body.email, timestamp]
   const results2 = await queryDB(stmt2, values2)
 
   if (results2.affectedRows == 1) {
