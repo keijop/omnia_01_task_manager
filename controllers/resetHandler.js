@@ -33,9 +33,9 @@ const resetHandler = asyncWrapper(async (req, res, next) => {
       to: req.body.email,
       subject: 'Password reset',
       html: `<h1>Password reset</h1>
-					<a href="https://omnia-task-manager.herokuapp.com/password?token=${token}" target="_blank">
-					<b>This is your password reset link</b></a>
-					`,
+      				<a href="https://omnia-task-manager.herokuapp.com/password?token=${token}" target="_blank">
+      				<b>This is your password reset link</b></a>
+      				`,
     }
 
     sendEmail(emailData)
