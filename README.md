@@ -47,7 +47,8 @@ Task Manager application features user registration with e-mail verification. Si
 
 ### Links
 
-- Live Site URL: [Running on Heroku](https://omnia-task-manager.herokuapp.com/)
+- Live Site URL: ~~[Running on Heroku](https://omnia-task-manager.herokuapp.com/)~~
+  Heroku terminated their free tier. Application will be migrated to AWS platform shortly.
 
 ## My process
 
